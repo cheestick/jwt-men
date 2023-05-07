@@ -1,5 +1,5 @@
-const CustomAPIError = require("../errors/custom-error");
 const jwt = require("jsonwebtoken");
+const { BadRequestError } = require("../errors");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
@@ -9,7 +9,7 @@ const login = async (req, res) => {
   // check in the controller
 
   if (!username || !password) {
-    throw new CustomAPIError("Please provide emain and password", 400);
+    throw new BadRequestError("Please provide emain and password");
   }
 
   // just for demo, normally provided bt DB!
